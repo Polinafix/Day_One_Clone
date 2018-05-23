@@ -10,20 +10,30 @@ import UIKit
 
 class JournalTableViewController: UITableViewController {
 
+    @IBOutlet weak var cameraButton: UIButton!
+    @IBOutlet weak var plusButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        plusButton.imageView?.contentMode = .scaleAspectFit
+        cameraButton.imageView?.contentMode = .scaleAspectFit
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
 
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    @IBAction func cameraTapped(_ sender: UIButton) {
+        performSegue(withIdentifier: "goToNew", sender: "camera")
     }
+    
+    @IBAction func plusTapped(_ sender: UIButton) {
+        performSegue(withIdentifier: "goToNew", sender: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+    }
+    
+    
 
     // MARK: - Table view data source
 
