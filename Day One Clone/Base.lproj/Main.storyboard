@@ -173,20 +173,28 @@
                                 <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                 <items>
                                     <navigationItem title="Title" id="JQs-0Z-HwN">
-                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="vbl-ah-2d4"/>
-                                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="h6p-Oj-4Wa"/>
+                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="vbl-ah-2d4">
+                                            <connections>
+                                                <action selector="cancelTapped:" destination="dXs-dS-ySr" id="aMA-c5-c53"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="h6p-Oj-4Wa">
+                                            <connections>
+                                                <action selector="saveTapped:" destination="dXs-dS-ySr" id="VjK-Nj-Ix2"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zKk-XA-aQW">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="20"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" red="0.29803921568627451" green="0.75686274509803919" blue="0.9882352941176471" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7a7-4M-TZB">
                                 <rect key="frame" x="10" y="587" width="355" height="70"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="fXz-vL-7rF">
-                                        <rect key="frame" x="0.0" y="0.0" width="150" height="70"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fXz-vL-7rF">
+                                        <rect key="frame" x="0.0" y="0.0" width="140" height="70"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f4L-vh-bDv">
                                                 <rect key="frame" x="0.0" y="0.0" width="70" height="70"/>
@@ -194,13 +202,19 @@
                                                     <constraint firstAttribute="width" constant="70" id="XUs-Kp-7NV"/>
                                                 </constraints>
                                                 <state key="normal" image="calendar"/>
+                                                <connections>
+                                                    <action selector="calendarTapped:" destination="dXs-dS-ySr" eventType="touchUpInside" id="Ef3-fp-hRU"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rnR-3T-aPS">
-                                                <rect key="frame" x="80" y="0.0" width="70" height="70"/>
+                                                <rect key="frame" x="70" y="0.0" width="70" height="70"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="70" id="kdg-GS-bW2"/>
                                                 </constraints>
                                                 <state key="normal" image="blueCamera"/>
+                                                <connections>
+                                                    <action selector="cameraTapped:" destination="dXs-dS-ySr" eventType="touchUpInside" id="CBL-MX-XBt"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -221,14 +235,17 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="058-tJ-T2g">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="058-tJ-T2g">
                                 <rect key="frame" x="0.0" y="549" width="375" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="0sC-bp-Ody"/>
                                 </constraints>
                                 <state key="normal" title="Set Date"/>
+                                <connections>
+                                    <action selector="saveDateTapped:" destination="dXs-dS-ySr" eventType="touchUpInside" id="xga-zY-Yqa"/>
+                                </connections>
                             </button>
-                            <datePicker contentMode="scaleToFill" verticalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="rdA-ea-nn2">
+                            <datePicker hidden="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="rdA-ea-nn2">
                                 <rect key="frame" x="0.0" y="64" width="375" height="485"/>
                                 <date key="date" timeIntervalSinceReferenceDate="548782666.18059194">
                                     <!--2018-05-23 15:37:46 +0000-->
@@ -261,6 +278,15 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="CeR-Nb-7G9"/>
                     </view>
+                    <connections>
+                        <outlet property="aboveNavBarView" destination="zKk-XA-aQW" id="fYx-Pp-2dt"/>
+                        <outlet property="bottomConstraint" destination="mVd-lg-otB" id="ZbP-mY-ePs"/>
+                        <outlet property="datePicker" destination="rdA-ea-nn2" id="8A4-qj-Zeg"/>
+                        <outlet property="navBar" destination="kWs-CA-CG5" id="Y1B-RP-F7n"/>
+                        <outlet property="setDatabutton" destination="058-tJ-T2g" id="sdP-iI-L5N"/>
+                        <outlet property="stackView" destination="fXz-vL-7rF" id="Oej-BP-w90"/>
+                        <outlet property="textView" destination="HGG-Mq-Ow6" id="65C-Ow-Vwx"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="scu-7O-dnw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
