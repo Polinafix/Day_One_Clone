@@ -18,6 +18,8 @@ class CreateJournalViewController: UIViewController {
     @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var aboveNavBarView: UIView!
     
+    var date = Date()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -31,6 +33,11 @@ class CreateJournalViewController: UIViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: Notification.Name.UIKeyboardWillShow, object: nil)
 
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        updateDate()
     }
 
     @objc func keyboardWillHide(notification:Notification) {
@@ -55,9 +62,24 @@ class CreateJournalViewController: UIViewController {
     }
     
     @IBAction func saveDateTapped(_ sender: UIButton) {
+        textView.isHidden = false
+        datePicker.isHidden = true
+        setDatabutton.isHidden = true
+        date = datePicker.date
+        updateDate()
     }
     
     @IBAction func calendarTapped(_ sender: UIButton) {
+        textView.isHidden = true
+        datePicker.isHidden = false
+        setDatabutton.isHidden = false
+        datePicker.date = date
+    }
+    
+    func updateDate() {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "E, MMM d, yyyy"
+        navBar.topItem?.title = formatter.string(from: date)
     }
     @IBAction func cameraTapped(_ sender: UIButton) {
     }
