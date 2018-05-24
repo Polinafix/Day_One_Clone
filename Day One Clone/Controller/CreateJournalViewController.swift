@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CreateJournalViewController: UIViewController {
+class CreateJournalViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var textView: UITextView!
@@ -19,6 +19,9 @@ class CreateJournalViewController: UIViewController {
     @IBOutlet weak var aboveNavBarView: UIView!
     
     var date = Date()
+    var imagePicker = UIImagePickerController()
+    var images:[UIImage] = []
+    var startWithCamera = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +31,7 @@ class CreateJournalViewController: UIViewController {
         navBar.tintColor = .white
         navBar.isTranslucent = false
         navBar.titleTextAttributes = [.foregroundColor:UIColor.white]
+        imagePicker.delegate = self
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: Notification.Name.UIKeyboardWillHide, object: nil)
         
@@ -38,6 +42,12 @@ class CreateJournalViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         updateDate()
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        if startWithCamera {
+            startWithCamera = false
+            cameraTapped("")
+        }
     }
 
     @objc func keyboardWillHide(notification:Notification) {
@@ -56,6 +66,7 @@ class CreateJournalViewController: UIViewController {
     }
     
     @IBAction func cancelTapped(_ sender: UIBarButtonItem) {
+        dismiss(animated: true, completion: nil)
     }
     
     @IBAction func saveTapped(_ sender: UIBarButtonItem) {
@@ -81,7 +92,26 @@ class CreateJournalViewController: UIViewController {
         formatter.dateFormat = "E, MMM d, yyyy"
         navBar.topItem?.title = formatter.string(from: date)
     }
-    @IBAction func cameraTapped(_ sender: UIButton) {
+    @IBAction func cameraTapped(_ sender: Any) {
+        imagePicker.sourceType = .photoLibrary
+        present(imagePicker, animated: true, completion:nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        if let selectedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            images.append(selectedImage)
+            let imageView = UIImageView()
+            imageView.heightAnchor.constraint(equalToConstant: 70.0).isActive = true
+            imageView.widthAnchor.constraint(equalToConstant: 70.0).isActive = true
+            imageView.image = selectedImage
+            imageView.clipsToBounds = true
+            imageView.contentMode = .scaleAspectFill
+            stackView.addArrangedSubview(imageView)
+            imagePicker.dismiss(animated: true) {
+                //Animation
+            }
+            
+        }
     }
     
 }
