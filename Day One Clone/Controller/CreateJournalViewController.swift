@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import RealmSwift
+
 
 class CreateJournalViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
@@ -25,7 +27,6 @@ class CreateJournalViewController: UIViewController, UIImagePickerControllerDele
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         navBar.barTintColor = UIColor(red: 0.298, green: 0.757, blue: 0.988, alpha: 1.00)//4cc1fc
         aboveNavBarView.backgroundColor = UIColor(red: 0.298, green: 0.757, blue: 0.988, alpha: 1.00)
         navBar.tintColor = .white
@@ -70,6 +71,22 @@ class CreateJournalViewController: UIViewController, UIImagePickerControllerDele
     }
     
     @IBAction func saveTapped(_ sender: UIBarButtonItem) {
+        if let realm = try? Realm() {
+            let entry = Entry()
+            entry.text = textView.text
+            entry.date = date
+            for image in images {
+                let picture = Picture(image: image)
+                entry.pictures.append(picture)
+                picture.entry = entry
+                
+            }
+            try? realm.write {
+                realm.add(entry)
+            }
+            dismiss(animated: true, completion: nil)
+
+        }
     }
     
     @IBAction func saveDateTapped(_ sender: UIButton) {
