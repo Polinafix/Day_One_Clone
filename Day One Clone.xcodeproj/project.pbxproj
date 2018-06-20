@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0E8671E823C3D3F02A7106E0 /* Pods_Day_One_Clone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B7A432E3FEAC0D1ECAD6295 /* Pods_Day_One_Clone.framework */; };
 		644C68E520BDD3AB0021C6BA /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 644C68E420BDD3AB0021C6BA /* Models.swift */; };
+		644C68E720C08A010021C6BA /* JournalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 644C68E620C08A010021C6BA /* JournalCell.swift */; };
 		648DFB1E20B488770070F482 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648DFB1D20B488770070F482 /* AppDelegate.swift */; };
 		648DFB2320B488770070F482 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 648DFB2120B488770070F482 /* Main.storyboard */; };
 		648DFB2520B488780070F482 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 648DFB2420B488780070F482 /* Assets.xcassets */; };
@@ -23,6 +24,7 @@
 		0529EC020252C362DB07A92F /* Pods-Day One Clone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Day One Clone.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Day One Clone/Pods-Day One Clone.debug.xcconfig"; sourceTree = "<group>"; };
 		4069D3438F427A00C6D378EC /* Pods-Day One Clone.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Day One Clone.release.xcconfig"; path = "Pods/Target Support Files/Pods-Day One Clone/Pods-Day One Clone.release.xcconfig"; sourceTree = "<group>"; };
 		644C68E420BDD3AB0021C6BA /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		644C68E620C08A010021C6BA /* JournalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalCell.swift; sourceTree = "<group>"; };
 		648DFB1A20B488770070F482 /* Day One Clone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Day One Clone.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		648DFB1D20B488770070F482 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		648DFB2220B488770070F482 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 				648DFB3220B48E230070F482 /* JournalTableViewController.swift */,
 				648DFB3420B48E4B0070F482 /* CreateJournalViewController.swift */,
 				648DFB3620B48E630070F482 /* PhotoCollectionViewController.swift */,
+				644C68E620C08A010021C6BA /* JournalCell.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -237,6 +240,7 @@
 				648DFB3320B48E230070F482 /* JournalTableViewController.swift in Sources */,
 				644C68E520BDD3AB0021C6BA /* Models.swift in Sources */,
 				648DFB3520B48E4B0070F482 /* CreateJournalViewController.swift in Sources */,
+				644C68E720C08A010021C6BA /* JournalCell.swift in Sources */,
 				648DFB3120B48E040070F482 /* JournalDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

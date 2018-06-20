@@ -13,20 +13,24 @@ class JournalTableViewController: UITableViewController {
 
     @IBOutlet weak var cameraButton: UIButton!
     @IBOutlet weak var plusButton: UIButton!
+    var entries: Results<Entry>?
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         plusButton.imageView?.contentMode = .scaleAspectFit
         cameraButton.imageView?.contentMode = .scaleAspectFit
+    }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        getEntries()
+    }
+
+    func getEntries() {
         if let realm  = try? Realm() {
-            let entries = realm.objects(Entry.self)
-            print(entries[0].text)
-            print(entries[0].date)
-            print(entries[0].pictures.count)
+            entries = realm.objects(Entry.self).sorted(byKeyPath: "date", ascending: false)
+            tableView.reloadData()
         }
-
-
     }
     
     @IBAction func cameraTapped(_ sender: UIButton) {
@@ -53,14 +57,14 @@ class JournalTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        if let entries = self.entries {
+            return entries.count
+        }else {
+            return 0
+        }
+
     }
 
     /*
