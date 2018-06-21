@@ -103,9 +103,9 @@
 			isa = PBXGroup;
 			children = (
 				648DFB3020B48E040070F482 /* JournalDetailViewController.swift */,
-				648DFB3220B48E230070F482 /* JournalTableViewController.swift */,
 				648DFB3420B48E4B0070F482 /* CreateJournalViewController.swift */,
 				648DFB3620B48E630070F482 /* PhotoCollectionViewController.swift */,
+				648DFB3220B48E230070F482 /* JournalTableViewController.swift */,
 				644C68E620C08A010021C6BA /* JournalCell.swift */,
 			);
 			path = Controller;

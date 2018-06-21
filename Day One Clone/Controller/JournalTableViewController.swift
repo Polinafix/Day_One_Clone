@@ -26,6 +26,7 @@ class JournalTableViewController: UITableViewController {
         getEntries()
     }
 
+    //getting objects from Realm database
     func getEntries() {
         if let realm  = try? Realm() {
             entries = realm.objects(Entry.self).sorted(byKeyPath: "date", ascending: false)
@@ -67,15 +68,23 @@ class JournalTableViewController: UITableViewController {
 
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
-        return cell
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "journalCell", for: indexPath) as? JournalCell {
+            if let entry = entries?[indexPath.row] {
+                cell.previewTextLabel.text = entry.text
+                if let image = entry.pictures.first?.thumbnail() {
+                    cell.imageWidth.constant = 100
+                    cell.previewImageView.image = image
+                } else {
+                    cell.imageWidth.constant = 0
+                }
+            }
+            return cell
+        }
+        return UITableViewCell()
     }
-    */
+
 
     /*
     // Override to support conditional editing of the table view.
