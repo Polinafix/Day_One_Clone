@@ -19,11 +19,11 @@ class CreateJournalViewController: UIViewController, UIImagePickerControllerDele
     @IBOutlet weak var setDatabutton: UIButton!
     @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var aboveNavBarView: UIView!
-    
-    var date = Date()
+
     var imagePicker = UIImagePickerController()
     var images:[UIImage] = []
     var startWithCamera = false
+    var entry = Entry()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -72,9 +72,8 @@ class CreateJournalViewController: UIViewController, UIImagePickerControllerDele
     
     @IBAction func saveTapped(_ sender: UIBarButtonItem) {
         if let realm = try? Realm() {
-            let entry = Entry()
             entry.text = textView.text
-            entry.date = date
+
             for image in images {
                 let picture = Picture(image: image)
                 entry.pictures.append(picture)
@@ -93,7 +92,7 @@ class CreateJournalViewController: UIViewController, UIImagePickerControllerDele
         textView.isHidden = false
         datePicker.isHidden = true
         setDatabutton.isHidden = true
-        date = datePicker.date
+        entry.date = datePicker.date
         updateDate()
     }
     
@@ -101,13 +100,11 @@ class CreateJournalViewController: UIViewController, UIImagePickerControllerDele
         textView.isHidden = true
         datePicker.isHidden = false
         setDatabutton.isHidden = false
-        datePicker.date = date
+        datePicker.date = entry.date
     }
     
     func updateDate() {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "E, MMM d, yyyy"
-        navBar.topItem?.title = formatter.string(from: date)
+        navBar.topItem?.title = entry.datePrettyString()
     }
     @IBAction func cameraTapped(_ sender: Any) {
         imagePicker.sourceType = .photoLibrary

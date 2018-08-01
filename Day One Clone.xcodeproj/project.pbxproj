@@ -18,6 +18,7 @@
 		648DFB3320B48E230070F482 /* JournalTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648DFB3220B48E230070F482 /* JournalTableViewController.swift */; };
 		648DFB3520B48E4B0070F482 /* CreateJournalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648DFB3420B48E4B0070F482 /* CreateJournalViewController.swift */; };
 		648DFB3720B48E630070F482 /* PhotoCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648DFB3620B48E630070F482 /* PhotoCollectionViewController.swift */; };
+		64BE0FC720DD872000733C34 /* SplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64BE0FC620DD872000733C34 /* SplitViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,7 @@
 		648DFB3220B48E230070F482 /* JournalTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalTableViewController.swift; sourceTree = "<group>"; };
 		648DFB3420B48E4B0070F482 /* CreateJournalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateJournalViewController.swift; sourceTree = "<group>"; };
 		648DFB3620B48E630070F482 /* PhotoCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewController.swift; sourceTree = "<group>"; };
+		64BE0FC620DD872000733C34 /* SplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitViewController.swift; sourceTree = "<group>"; };
 		6B7A432E3FEAC0D1ECAD6295 /* Pods_Day_One_Clone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Day_One_Clone.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -107,6 +109,7 @@
 				648DFB3620B48E630070F482 /* PhotoCollectionViewController.swift */,
 				648DFB3220B48E230070F482 /* JournalTableViewController.swift */,
 				644C68E620C08A010021C6BA /* JournalCell.swift */,
+				64BE0FC620DD872000733C34 /* SplitViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -242,6 +245,7 @@
 				648DFB3520B48E4B0070F482 /* CreateJournalViewController.swift in Sources */,
 				644C68E720C08A010021C6BA /* JournalCell.swift in Sources */,
 				648DFB3120B48E040070F482 /* JournalDetailViewController.swift in Sources */,
+				64BE0FC720DD872000733C34 /* SplitViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
